@@ -1,0 +1,80 @@
+{
+    "Teachers": [
+        {
+            "Name": "Luis F. Laiton",
+            "Classes": [
+                "Base de datos",
+                "Programación multiplataforma",
+                "Procesamiento de texto",
+                "Logica matematica"
+            ],
+            "Email": "prof.luis.laiton@polcolan.edu.co",
+            "Tutorships": {
+                "Planned": [
+                    {
+                        "Day": "Martes",
+                        "Hours": "8:30 - 12:00",
+                        "Link": ""
+                    },
+                    {
+                        "Day": "Jueves",
+                        "Hours": "8:30 - 12:00",
+                        "Link": ""
+                    },
+                    {
+                        "Day": "Jueves",
+                        "Hours": "20:30 - 21:30",
+                        "Link": ""
+                    }
+                ],
+                "Scheduled": [
+                    {
+                        "Day": "Martes",
+                        "Hours": "8:30 - 9:30",
+                        "Recording_link": "",
+                        "Student": ""
+                    },
+                    {
+                        "Day": "Jueves",
+                        "Hours": "10:00 - 11:00",
+                        "Recording_link": "",
+                        "Student": ""
+                    },
+                    {
+                        "Day": "Jueves",
+                        "Hours": "20:30 - 21:30",
+                        "Recording_link": "",
+                        "Student": ""
+                    }
+                ]
+            }
+        },
+        {
+            "Name": "German Reyes",
+            "Classes": [
+                "Base de datos",
+                "Programación multiplataforma",
+                "Procesamiento de texto",
+                "Logica matematica"
+            ],
+            "Email": "prof.german.reyes@polcolan.edu.co",
+            "Tutorships": {
+                "Planned": [
+                    {
+                        "Day": "Miercoles",
+                        "Hours": "18:30 - 19:30",
+                        "Link": ""
+                    }
+                ],
+                "Scheduled": [
+                    {
+                        "Day": "Miercoles",
+                        "Hours": "18:30 - 19:30",
+                        "Recording_link": "",
+                        "Student": ""
+                    }
+                ]
+            }
+        }
+    ]
+}

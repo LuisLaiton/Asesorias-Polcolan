@@ -1,0 +1,56 @@
+{
+    "Record": [
+        {
+            "Week": "1",
+            "Teachers": [
+                {
+                    "Name": "Luis F. Laiton",
+                    "Email": "prof.luis.laiton@polcolan.edu.co",
+                    "Tutorships": [
+                        {
+                            "Date": "2024-06-11",
+                            "Hours": "8:30 - 9:30",
+                            "Recording_link": "",
+                            "Student": ""
+                        },
+                        {
+                            "Date": "2024-06-11",
+                            "Hours": "9:30 - 10:30",
+                            "Recording_link": "",
+                            "Student": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Week": "2",
+            "Teachers": [
+                {
+                    "Name": "Luis F. Laiton",
+                    "Email": "prof.luis.laiton@polcolan.edu.co",
+                    "Tutorships": [
+                        {
+                            "Date": "2024-06-11",
+                            "Hours": "8:30 - 9:30",
+                            "Recording_link": "",
+                            "Student": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "German Reyes",
+                    "Email": "prof.german.reyes@polcolan.edu.co",
+                    "Tutorships": [
+                        {
+                            "Date": "2024-06-12",
+                            "Hours": "18:30 - 19:30",
+                            "Recording_link": "",
+                            "Student": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
