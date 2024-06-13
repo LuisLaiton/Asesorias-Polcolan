@@ -13,36 +13,42 @@
                 "Planned": [
                     {
                         "Day": "Martes",
-                        "Hours": "8:30 - 12:00",
+                        "start_time": "8:30",
+                        "ending_time": "12:00",
+                        "Link": ""
+                        },
+                    {
+                        "Day": "Jueves",
+                        "start_time": "8:30",
+                        "ending_time": "12:00",
                         "Link": ""
                     },
                     {
                         "Day": "Jueves",
-                        "Hours": "8:30 - 12:00",
-                        "Link": ""
-                    },
-                    {
-                        "Day": "Jueves",
-                        "Hours": "20:30 - 21:30",
+                        "start_time": "20:30",
+                        "ending_time": "21:30",
                         "Link": ""
                     }
                 ],
                 "Scheduled": [
                     {
                         "Day": "Martes",
-                        "Hours": "8:30 - 9:30",
+                        "start_time": "8:30",
+                        "ending_time": "9:30",
                         "Recording_link": "",
                         "Student": ""
                     },
                     {
                         "Day": "Jueves",
-                        "Hours": "10:00 - 11:00",
+                        "start_time": "10:00",
+                        "ending_time": "11:00",
                         "Recording_link": "",
                         "Student": ""
                     },
                     {
                         "Day": "Jueves",
-                        "Hours": "20:30 - 21:30",
+                        "start_time": "20:30",
+                        "ending_time": "21:30",
                         "Recording_link": "",
                         "Student": ""
                     }
@@ -62,14 +68,16 @@
                 "Planned": [
                     {
                         "Day": "Miercoles",
-                        "Hours": "18:30 - 19:30",
+                        "start_time": "18:30",
+                        "ending_time": "19:30",
                         "Link": ""
                     }
                 ],
                 "Scheduled": [
                     {
                         "Day": "Miercoles",
-                        "Hours": "18:30 - 19:30",
+                        "start_time": "18:30",
+                        "ending_time": "19:30",
                         "Recording_link": "",
                         "Student": ""
                     }
