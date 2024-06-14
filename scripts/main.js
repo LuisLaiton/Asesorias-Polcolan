@@ -1,5 +1,7 @@
-// Arreglo global para almacenar datos de los profesores.
-let datos = [];
+let datos = []; // Arreglo global para almacenar datos de los profesores.
+const $TBODY = document.getElementById("horarios_agendados"); // Obtiene el cuerpo de la tabla HTML.
+const $DROPDOWN = document.getElementById("lista-docentes");
+const $NOMBRE = document.getElementById("nombre-docente");
 
 /**
  * Función asíncrona para obtener datos de una URL.
@@ -18,102 +20,6 @@ async function fetchData(url) {
     } catch (error) {
         console.error('Error al leer el archivo JSON:', error);
     }
-}
-
-/**
- * Inicializa los datos llamando a la función fetchData y luego muestra los horarios.
- */
-async function initializeData() {
-    const url = "https://raw.githubusercontent.com/LuisLaiton/Asesorias-Polcolan/Luis-Felipe-Laiton-Cortes/data/tutorships.json";
-    
-    // Obtiene los datos de los profesores.
-    datos = await fetchData(url);
-    
-    if (datos) {
-        console.log(datos[0].Tutorships.Planned);
-        
-        // Genera y muestra la matriz de horarios.
-        matrizTabla(datos[0].Tutorships.Planned);
-        
-        // showTutorials(datos[0].Tutorships.Planned);
-    }
-}
-
-/**
- * Genera una tabla de horarios en bloques de 30 minutos para un conjunto de intervalos de tiempo.
- * @param {Array} hoursTeacher - Arreglo de objetos con las horas de inicio y fin de los intervalos.
- * @returns {Array} - Matriz de horarios en bloques de 30 minutos.
- */
-function matrizTabla(hoursTeacher) {
-    let tabla = []; // Matriz que almacenará los horarios.
-    let timeSet = new Set(); // Set para rastrear los tiempos ya procesados.
-
-    hoursTeacher.forEach(element => {
-        let startTime = timeToMinutes(element.start_time); // Convierte la hora de inicio a minutos.
-        const rows = diffBlocks(element.start_time, element.ending_time); // Calcula el número de bloques de 30 minutos.
-
-        // Agrega bloques de 30 minutos a la tabla.
-        for (let i = 0; i < rows; i++) {
-            const formattedTime = minutesToTime(startTime); // Convierte los minutos a formato 'HH:MM'.
-
-            // Si el tiempo no ha sido procesado, añade una nueva fila.
-            if (!timeSet.has(formattedTime)) {
-                let row = [formattedTime, '', '', '', '', '', '']; 
-                tabla.push(row);
-                timeSet.add(formattedTime);
-            }
-
-            startTime += 30;
-        }
-    });
-
-    console.log(tabla);
-    return tabla;
-}
-
-/**
- * Muestra los horarios en una tabla HTML.
- * @param {Array} hoursTeacher - Arreglo de objetos con las horas de inicio y fin de los intervalos.
- */
-function showTutorials(hoursTeacher) {
-    const $TBODY = document.getElementById("horarios_agendados"); // Obtiene el cuerpo de la tabla HTML.
-
-    let startMinutes = 0, endMinutes = 0, diffBlocks = 0;
-
-    hoursTeacher.forEach(element => {
-        let startTime = element.start_time;
-
-        startMinutes = timeToMinutes(startTime); // Convierte la hora de inicio a minutos.
-        endMinutes = timeToMinutes(element.ending_time); // Convierte la hora de finalización a minutos.
-        diffBlocks = (endMinutes - startMinutes) / 30; // Calcula el número de bloques de 30 minutos.
-
-        console.log(startTime, "-", element.ending_time);
-        console.log(diffBlocks);
-
-        // Agrega filas a la tabla HTML.
-        for (let i = 0; i < diffBlocks; i++) {
-            if (document.getElementById(startTime) != startTime) {
-                const tr = document.createElement("tr"); // Crea una nueva fila.
-                const th = document.createElement("th"); // Crea un nuevo encabezado de fila.
-                th.id = startTime;
-                th.scope = "row";
-                th.textContent = startTime;
-
-                tr.appendChild(th);
-
-                // Crea columnas vacías para la fila.
-                for (let i = 0; i < 6; i++) {
-                    const td = document.createElement("td");
-                    tr.appendChild(td);
-                }
-
-                $TBODY.appendChild(tr); // Añade la fila al cuerpo de la tabla.
-                
-                // Incrementa el tiempo en 30 minutos y convierte a formato 'HH:MM'.
-                startTime = ((timeToMinutes(startTime) + 30) / 60).toFixed(2).replace('.', ':');
-            }
-        }
-    });
 }
 
 /**
@@ -148,6 +54,147 @@ function diffBlocks(start, end) {
     const endMinutes = timeToMinutes(end);
     return (endMinutes - startMinutes) / 30;
 }
+
+function loading() {
+    $TBODY.innerHTML = `
+            <td colspan="7">
+                <div class="d-flex align-items-center mx-5">
+                    <strong role="status">Cargando horario...</strong>
+                    <div class="spinner-border ms-auto" aria-hidden="true"></div>
+                </div>
+            </td>
+        `;
+}
+
+function weekday(day) {
+    switch (day) {
+        case "Lunes":
+            return 1;
+            break;
+        case "Martes":
+            return 2;
+            break;
+        case "Miercoles":
+            return 3;
+            break;
+        case "Jueves":
+            return 4;
+            break;
+        case "Viernes":
+            return 5;
+            break;
+        case "Sabado":
+            return 6;
+            break;
+        default:
+            console.log(`Error en el dia de la semana ${day}`);
+            break;
+    }
+}
+
+/**
+ * Genera una tabla de horarios en bloques de 30 minutos para un conjunto de intervalos de tiempo.
+ * @param {Array} hoursTeacher - Arreglo de objetos con las horas de inicio y fin de los intervalos.
+ * @returns {Array} - Matriz de horarios en bloques de 30 minutos.
+ */
+function matrixBoard(hoursTeacher) {
+    let board = []; // Matriz que almacenará los horarios.
+    let timeSet = new Set(); // Set para rastrear los tiempos ya procesados.
+
+    hoursTeacher.forEach(element => {
+        let startTime = timeToMinutes(element.start_time); // Convierte la hora de inicio a minutos.
+        const rows = diffBlocks(element.start_time, element.ending_time); // Calcula el número de bloques de 30 minutos.
+
+        // Agrega bloques de 30 minutos a la tabla.
+        for (let i = 0; i < rows; i++) {
+            const formattedTime = minutesToTime(startTime); // Convierte los minutos a formato 'HH:MM'.
+            
+            // Busca la fila en la matriz board que tiene el tiempo formattedTime.
+            let row = board.find(r => r[0] === formattedTime);
+
+            if (!row) {
+                // Si no encuentra la fila, crea una nueva.
+                row = [formattedTime, '', '', '', '', '', ''];
+                board.push(row);
+                timeSet.add(formattedTime);
+            }
+
+            // Actualiza la fila con la marca en el día correspondiente.
+            row[weekday(element.Day)] = "X";
+            startTime += 30;
+        }
+    });
+    console.log(board);
+    return board;
+}
+
+/**
+ * Muestra los horarios en una tabla HTML.
+ * @param {Array} hoursTeacher - Arreglo de objetos con las horas de inicio y fin de los intervalos.
+ */
+function showTutorials(matrixCalendar, name) {
+    $TBODY.innerHTML = "";
+
+    for (const row of matrixCalendar) {
+        const tr = document.createElement("tr"); // Crea una nueva fila.
+        for (const col of row) {
+            const td = document.createElement("td"); // Crea un nuevo encabezado de fila.
+            td.scope = "row";
+            td.textContent = "";
+            if (col == "X") {
+                td.classList.add("bg-warning");
+            } else if (col != "") {
+                td.textContent = `${col} - ${minutesToTime(timeToMinutes(col) + 30)}`;
+                td.classList.add("table-dark");
+            }
+            tr.appendChild(td);
+        }
+        $TBODY.appendChild(tr);
+    }
+    $NOMBRE.textContent = name;
+}
+
+function selectInfo(name) {
+    datos.forEach(element => {
+        if (name == element.Name) {
+            showTutorials(matrixBoard(element.Tutorships.Planned), element.Name);
+        }
+    });
+}
+
+function showTeachers() {
+    datos.forEach(element => {
+        const li = document.createElement("li");
+        li.textContent = element.Name;
+        li.id = element.Name;
+        li.classList.add("dropdown-item");
+        li.addEventListener("click", (event) => {
+            selectInfo(event.target.textContent);
+        });
+        $DROPDOWN.appendChild(li);
+    });
+}
+
+/**
+ * Inicializa los datos llamando a la función fetchData y luego muestra los horarios.
+ */
+async function initializeData() {
+    const url = "https://raw.githubusercontent.com/LuisLaiton/Asesorias-Polcolan/Luis-Felipe-Laiton-Cortes/data/tutorships.json";
+
+    // Obtiene los datos de los profesores.
+    datos = await fetchData(url);
+
+    if (datos) {
+        console.log(datos[0].Name);
+        // Genera y muestra la matriz de horarios.
+        showTutorials(matrixBoard(datos[0].Tutorships.Planned), datos[0].Name);
+        showTeachers();
+    } else {
+        loading();
+    }
+}
+
+
 
 // Inicializa los datos llamando a la función fetchData y mostrando los horarios.
 initializeData();

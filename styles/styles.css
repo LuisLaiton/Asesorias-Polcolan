@@ -1,0 +1,18 @@
+* {
+    --naranja: #E0441C;
+}
+
+.fondo-naranja {
+    background-color: var(--naranja);
+    color: white;
+}
+
+.texto-naranja {
+    color: var(--naranja);
+    font-weight: bold;
+}
+
+.scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
