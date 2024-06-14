@@ -1,8 +1,16 @@
 let datos = []; // Arreglo global para almacenar datos de los profesores.
 const $TBODY = document.getElementById("horarios_agendados"); // Obtiene el cuerpo de la tabla HTML.
-const $DROPDOWN = document.getElementById("lista-docentes");
-const $NOMBRE = document.getElementById("nombre-docente");
-
+const $DROPDOWN = document.getElementById("lista-docentes"); // Obtiene el contenedor de la lista desplegable de docentes.
+const $NOMBRE = document.getElementById("nombre-docente"); // Obtiene el texto del boton que despliega la lista de docentes.
+const weekDay = { // Objeto global para almacenar la relación entre el nombre del día de la semana y su respectivo número.
+    Lunes: 1,
+    Martes: 2,
+    Miercoles: 3,
+    Jueves: 4,
+    Viernes: 5,
+    Sabado: 6,
+    Domingo: 7
+}
 /**
  * Función asíncrona para obtener datos de una URL.
  * @param {string} url - URL del archivo JSON.
@@ -71,34 +79,12 @@ function loading() {
 }
 
 /**
- * Convierte un nombre de día en español a su índice correspondiente.
+ * Retorna el número de día de la semana correspondiente al nombre, según el objeto weekDay.
  * @param {string} day - Nombre del día en español.
  * @returns {number} - Índice correspondiente al día de la semana (1 para Lunes, 2 para Martes, etc.).
  */
-function weekday(day) {
-    switch (day) {
-        case "Lunes":
-            return 1;
-            break;
-        case "Martes":
-            return 2;
-            break;
-        case "Miercoles":
-            return 3;
-            break;
-        case "Jueves":
-            return 4;
-            break;
-        case "Viernes":
-            return 5;
-            break;
-        case "Sabado":
-            return 6;
-            break;
-        default:
-            console.log(`Error en el dia de la semana ${day}`);
-            break;
-    }
+function getWeekDay(day) {
+    return weekDay[day] || "Día no encontrado";
 }
 
 /**
@@ -129,7 +115,7 @@ function matrixBoard(hoursTeacher) {
             }
 
             // Actualiza la fila con la marca en el día correspondiente.
-            row[weekday(element.Day)] = "X";
+            row[getWeekDay(element.Day)] = "X";
             startTime += 30;
         }
     });
