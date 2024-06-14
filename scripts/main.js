@@ -55,6 +55,10 @@ function diffBlocks(start, end) {
     return (endMinutes - startMinutes) / 30;
 }
 
+/**
+ * Muestra un mensaje de carga en la tabla.
+ * Inserta un indicador de carga en la tabla, abarcando todas las columnas disponibles.
+ */
 function loading() {
     $TBODY.innerHTML = `
             <td colspan="7">
@@ -66,6 +70,11 @@ function loading() {
         `;
 }
 
+/**
+ * Convierte un nombre de día en español a su índice correspondiente.
+ * @param {string} day - Nombre del día en español.
+ * @returns {number} - Índice correspondiente al día de la semana (1 para Lunes, 2 para Martes, etc.).
+ */
 function weekday(day) {
     switch (day) {
         case "Lunes":
@@ -108,7 +117,7 @@ function matrixBoard(hoursTeacher) {
         // Agrega bloques de 30 minutos a la tabla.
         for (let i = 0; i < rows; i++) {
             const formattedTime = minutesToTime(startTime); // Convierte los minutos a formato 'HH:MM'.
-            
+
             // Busca la fila en la matriz board que tiene el tiempo formattedTime.
             let row = board.find(r => r[0] === formattedTime);
 
@@ -154,6 +163,10 @@ function showTutorials(matrixCalendar, name) {
     $NOMBRE.textContent = name;
 }
 
+/**
+ * Filtra y muestra la información de tutorías de un docente específico.
+ * @param {string} name - Nombre del docente.
+ */
 function selectInfo(name) {
     datos.forEach(element => {
         if (name == element.Name) {
@@ -162,15 +175,22 @@ function selectInfo(name) {
     });
 }
 
+/**
+ * Genera y muestra una lista de docentes.
+ * Crea elementos de lista para cada docente y añade eventos de clic para mostrar sus tutorías.
+ */
 function showTeachers() {
     datos.forEach(element => {
         const li = document.createElement("li");
         li.textContent = element.Name;
         li.id = element.Name;
         li.classList.add("dropdown-item");
+        
+        // Añade un evento de clic que muestra las tutorías del docente cuando se selecciona.
         li.addEventListener("click", (event) => {
             selectInfo(event.target.textContent);
         });
+
         $DROPDOWN.appendChild(li);
     });
 }
@@ -185,16 +205,12 @@ async function initializeData() {
     datos = await fetchData(url);
 
     if (datos) {
-        console.log(datos[0].Name);
-        // Genera y muestra la matriz de horarios.
-        showTutorials(matrixBoard(datos[0].Tutorships.Planned), datos[0].Name);
-        showTeachers();
+        showTutorials(matrixBoard(datos[0].Tutorships.Planned), datos[0].Name); // Genera y muestra la matriz de horarios.
+        showTeachers(); // Genera y muestra una lista con los nombres de los docentes
     } else {
         loading();
     }
 }
-
-
 
 // Inicializa los datos llamando a la función fetchData y mostrando los horarios.
 initializeData();
