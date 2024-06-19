@@ -1,14 +1,14 @@
 {
     "Teachers": [
         {
-            "Name": "Luis F. Laiton",
+            "Name": "Docente 1",
             "Classes": [
                 "Base de datos",
                 "Programación multiplataforma",
                 "Procesamiento de texto",
                 "Logica matematica"
             ],
-            "Email": "prof.luis.laiton@polcolan.edu.co",
+            "Email": "prof.uno@polcolan.edu.co",
             "Tutorships": {
                 "Planned": [
                     {
@@ -56,20 +56,67 @@
             }
         },
         {
-            "Name": "German Reyes",
+            "Name": "Docente 2",
             "Classes": [
-                "Base de datos",
-                "Programación multiplataforma",
-                "Procesamiento de texto",
-                "Logica matematica"
+                "Metodologia de investigación"
             ],
-            "Email": "prof.german.reyes@polcolan.edu.co",
+            "Email": "prof.dos@polcolan.edu.co",
             "Tutorships": {
                 "Planned": [
                     {
                         "Day": "Miercoles",
                         "start_time": "18:30",
                         "ending_time": "19:30",
+                        "Link": ""
+                    }
+                ],
+                "Scheduled": [
+                    {
+                        "Day": "Miercoles",
+                        "start_time": "18:30",
+                        "ending_time": "19:30",
+                        "Recording_link": "",
+                        "Student": ""
+                    }
+                ]
+            }
+        },
+        {
+            "Name": "Docente 3",
+            "Classes": [
+                "Inglés"
+            ],
+            "Email": "prof.tres@polcolan.edu.co",
+            "Tutorships": {
+                "Planned": [
+                    {
+                        "Day": "Miercoles",
+                        "start_time": "18:30",
+                        "ending_time": "19:30",
+                        "Link": ""
+                    },
+                    {
+                        "Day": "Lunes",
+                        "start_time": "9:00",
+                        "ending_time": "11:30",
+                        "Link": ""
+                    },
+                    {
+                        "Day": "Martes",
+                        "start_time": "8:00",
+                        "ending_time": "11:30",
+                        "Link": ""
+                    },
+                    {
+                        "Day": "Jueves",
+                        "start_time": "14:00",
+                        "ending_time": "16:00",
+                        "Link": ""
+                    },
+                    {
+                        "Day": "Sabado",
+                        "start_time": "17:00",
+                        "ending_time": "17:30",
                         "Link": ""
                     }
                 ],
