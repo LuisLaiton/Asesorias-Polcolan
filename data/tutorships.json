@@ -90,20 +90,14 @@
             "Tutorships": {
                 "Planned": [
                     {
-                        "Day": "Miercoles",
-                        "start_time": "18:30",
-                        "ending_time": "19:30",
+                        "Day": "Martes",
+                        "start_time": "8:00",
+                        "ending_time": "11:30",
                         "Link": ""
                     },
                     {
                         "Day": "Lunes",
                         "start_time": "9:00",
-                        "ending_time": "11:30",
-                        "Link": ""
-                    },
-                    {
-                        "Day": "Martes",
-                        "start_time": "8:00",
                         "ending_time": "11:30",
                         "Link": ""
                     },
@@ -117,6 +111,12 @@
                         "Day": "Sabado",
                         "start_time": "17:00",
                         "ending_time": "17:30",
+                        "Link": ""
+                    },
+                    {
+                        "Day": "Miercoles",
+                        "start_time": "18:30",
+                        "ending_time": "19:30",
                         "Link": ""
                     }
                 ],
